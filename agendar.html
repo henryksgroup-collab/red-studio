@@ -3,408 +3,535 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Agende seu servico de estetica automotiva no Red Studio — Conselheiro Lafaiete, MG.">
+<meta name="description" content="Agende seu servico de estetica automotiva no Red Studio — Conselheiro Lafaiete, MG. Lavagem, polimento, higienizacao e muito mais.">
 <title>Agendar Servico | Red Studio Automotive</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --red:#CC0000;--red2:#E02020;--red3:#FF4444;
-  --bg:#0a0a0a;--bg2:#111;--bg3:#161616;--bg4:#1c1c1c;
-  --text:#F2F2F2;--text2:#999;--text3:#555;
-  --border:#1e1e1e;--border2:#2a2a2a;
-  --r:8px;--gold:#F59E0B;
+  --red:#CC0000;--red-h:#a80000;--red-s:#FF3333;
+  --bg:#080808;--s1:#0d0d0d;--s2:#111;--s3:#161616;--s4:#1c1c1c;
+  --t1:#F5F5F5;--t2:#aaa;--t3:#555;--t4:#2a2a2a;
+  --bdr:#1a1a1a;--bdr2:#232323;
+  --gold:#F59E0B;--green:#22c55e;
+  --r:6px;
 }
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
-.container{max-width:1140px;margin:0 auto;padding:0 20px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--red)}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
-/* NAV */
-#nav{position:sticky;top:0;z-index:900;background:rgba(10,10,10,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);height:60px;display:flex;align-items:center;padding:0 20px}
-.nav-inner{max-width:1140px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-circle{width:34px;height:34px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;flex-shrink:0}
-.nav-logo-text{font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text)}
-.nav-logo-text .accent{color:var(--red)}
-.nav-back{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text2);text-decoration:none;transition:color .2s}
-.nav-back:hover{color:var(--text)}
-.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+/* ── UTILS ── */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.red{color:var(--red)}
+.tag{display:inline-block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.2);padding:4px 12px;border-radius:2px}
+.section-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:10px}
+h2.sh{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:1.05}
+.sep{border:none;border-top:1px solid var(--bdr);margin:0}
 
-/* HERO */
-#hero{background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(180,0,0,.1),transparent),var(--bg);padding:72px 20px 56px;text-align:center;border-bottom:1px solid var(--border)}
-.hero-tag{display:inline-block;background:rgba(204,0,0,.12);color:var(--red);font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;padding:5px 16px;border-radius:2px;border:1px solid rgba(204,0,0,.2);margin-bottom:16px}
-#hero h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:12px}
-#hero h1 .accent{color:var(--red)}
-#hero p{font-size:1rem;color:var(--text2);max-width:520px;margin:0 auto 28px;line-height:1.7}
-.hero-trust{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text3)}
-.trust-item svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2}
-.trust-item .star-fill{fill:var(--gold);stroke:none}
+/* ── TOPBAR ── */
+#topbar{height:56px;background:rgba(8,8,8,.95);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:200;display:flex;align-items:center;padding:0 24px;gap:16px;backdrop-filter:blur(10px)}
+.tb-logo{display:flex;align-items:center;gap:9px;margin-right:auto}
+.tb-dot{width:30px;height:30px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#fff;flex-shrink:0}
+.tb-name{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+.tb-back{display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--t3);transition:color .2s}
+.tb-back:hover{color:var(--t1)}
+.tb-back svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
+.tb-wa{display:flex;align-items:center;gap:7px;background:#25D366;color:#fff;font-size:.78rem;font-weight:700;padding:7px 14px;border-radius:var(--r);transition:filter .2s}
+.tb-wa:hover{filter:brightness(1.1)}
+.tb-wa svg{width:14px;height:14px;fill:#fff}
 
-/* SECTION */
-.section{padding:72px 0}
-.section-tag{display:inline-block;background:rgba(204,0,0,.1);color:var(--red);font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;padding:4px 12px;border-radius:2px;border:1px solid rgba(204,0,0,.18);margin-bottom:14px}
-.section-title{font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:10px}
-.section-sub{font-size:.93rem;color:var(--text2);max-width:540px;line-height:1.7;margin-bottom:44px}
+/* ── HERO ── */
+#hero{background:var(--s1);border-bottom:1px solid var(--bdr);padding:72px 24px 64px}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--t2);background:var(--s3);border:1px solid var(--bdr2);padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.hero-pill-dot{width:6px;height:6px;background:var(--green);border-radius:50%}
+#hero h1{font-size:clamp(2rem,5vw,3.8rem);font-weight:900;letter-spacing:-.05em;line-height:1.02;margin-bottom:16px}
+#hero h1 em{font-style:normal;color:var(--red)}
+#hero p{font-size:1rem;color:var(--t2);max-width:480px;line-height:1.7;margin-bottom:28px}
+.hero-stars{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--t2)}
+.stars{display:flex;gap:2px}
+.stars svg{width:14px;height:14px;fill:var(--gold)}
+.hero-trust-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}
+.htr{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--t3)}
+.htr svg{width:12px;height:12px;stroke:var(--red);fill:none;stroke-width:2.5}
 
-/* SERVICE CARDS */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
-.svc-card{background:var(--bg2);border:1px solid var(--border);padding:28px;cursor:pointer;position:relative;overflow:hidden;transition:all .3s cubic-bezier(.25,.46,.45,.94)}
-.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--red3));transform:scaleX(0);transform-origin:left;transition:transform .35s}
-.svc-card:hover{background:var(--bg3);border-color:rgba(204,0,0,.25);transform:translateY(-2px)}
-.svc-card:hover::after{transform:scaleX(1)}
-.svc-card.selected{border-color:var(--red);background:rgba(204,0,0,.06)}
-.svc-card.selected::after{transform:scaleX(1)}
-.svc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:12px}
-.svc-icon{width:42px;height:42px;border-radius:var(--r);background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.svc-icon svg{width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:1.8}
-.svc-badge{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--red);background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.2);padding:3px 8px;border-radius:2px;white-space:nowrap}
-.svc-badge.novo{color:var(--gold);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25)}
-.svc-name{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.svc-brief{font-size:.83rem;color:var(--text2);line-height:1.55;margin-bottom:18px}
-.svc-footer{display:flex;align-items:center;justify-content:space-between}
-.svc-see-more{display:flex;align-items:center;gap:6px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red)}
-.svc-see-more svg{width:14px;height:14px;stroke:var(--red);fill:none;stroke-width:2;transition:transform .2s}
-.svc-card:hover .svc-see-more svg{transform:translateX(3px)}
-.svc-checkbox{width:20px;height:20px;border-radius:4px;border:2px solid var(--border2);background:var(--bg4);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
-.svc-card.selected .svc-checkbox{background:var(--red);border-color:var(--red)}
-.svc-card.selected .svc-checkbox svg{opacity:1}
-.svc-checkbox svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:3;opacity:0;transition:opacity .2s}
+/* HERO FORM CARD */
+.hero-form-card{background:var(--s2);border:1px solid var(--bdr2);border-radius:10px;padding:28px;position:sticky;top:72px}
+.hfc-title{font-size:1rem;font-weight:800;margin-bottom:4px}
+.hfc-sub{font-size:.78rem;color:var(--t3);margin-bottom:20px}
+.hfc-group{margin-bottom:12px}
+.hfc-group label{display:block;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:5px}
+.hfc-input{width:100%;background:var(--s3);border:1px solid var(--bdr2);border-radius:var(--r);padding:11px 13px;font-size:.88rem;color:var(--t1);outline:none;font-family:inherit;transition:border .2s}
+.hfc-input:focus{border-color:rgba(204,0,0,.5)}
+.hfc-input::placeholder{color:var(--t3)}
+.hfc-btn{width:100%;margin-top:4px;background:var(--red);color:#fff;font-size:.92rem;font-weight:800;letter-spacing:.03em;padding:14px;border-radius:var(--r);border:none;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.hfc-btn:hover{background:var(--red-h)}
+.hfc-btn svg{width:17px;height:17px;fill:#fff}
+.hfc-note{font-size:.7rem;color:var(--t3);text-align:center;margin-top:8px}
 
-/* MODAL */
-#modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
-#modal-overlay.open{display:flex}
-#modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;position:relative}
-.modal-head{padding:28px 28px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg2);z-index:2}
-.modal-tag{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:10px}
-.modal-title{font-size:1.4rem;font-weight:900;letter-spacing:-.03em}
-.modal-close{position:absolute;top:20px;right:20px;width:32px;height:32px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
-.modal-close:hover{background:var(--red);border-color:var(--red)}
-.modal-close svg{width:14px;height:14px;stroke:var(--text2);fill:none;stroke-width:2}
-.modal-close:hover svg{stroke:#fff}
-.modal-body{padding:24px 28px}
-.modal-section-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:12px}
-.modal-includes{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.modal-includes li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text2);line-height:1.55}
-.modal-includes li::before{content:'';flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--red);margin-top:7px}
-.modal-includes li.warn{color:var(--text3)}
-.modal-includes li.warn::before{background:var(--text3)}
-.modal-obs{background:rgba(204,0,0,.06);border:1px solid rgba(204,0,0,.15);border-radius:var(--r);padding:14px 16px;font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:24px}
-.modal-obs-label{color:var(--red);display:block;margin-bottom:4px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
-.modal-actions{display:flex;gap:10px}
-.btn-add{flex:1;background:var(--red);color:#fff;font-size:.9rem;font-weight:700;letter-spacing:.04em;padding:14px;border-radius:var(--r);border:none;cursor:pointer;transition:all .2s}
-.btn-add:hover{background:var(--red2)}
-.btn-add.added{background:#1a1a1a;color:var(--red);border:2px solid var(--red)}
-.btn-cancel{padding:14px 18px;border-radius:var(--r);background:transparent;color:var(--text3);border:1px solid var(--border2);cursor:pointer;font-size:.88rem;transition:all .2s}
-.btn-cancel:hover{color:var(--text);border-color:var(--text3)}
+/* ── COMBOS SECTION ── */
+#combos{background:var(--bg);padding:72px 0}
+#combos h2{margin-bottom:8px}
+#combos .section-intro{font-size:.95rem;color:var(--t2);max-width:520px;margin-bottom:48px;line-height:1.7}
+.combos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.combo-card{background:var(--s2);border:1px solid var(--bdr2);border-radius:10px;padding:28px 24px;position:relative;transition:all .25s}
+.combo-card:hover{border-color:rgba(204,0,0,.3);transform:translateY(-2px)}
+.combo-card.destaque{border-color:var(--red);background:var(--s2)}
+.combo-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;padding:3px 12px;border-radius:2px;white-space:nowrap}
+.combo-name{font-size:1.15rem;font-weight:900;letter-spacing:-.03em;margin-bottom:4px}
+.combo-sub{font-size:.78rem;color:var(--t3);margin-bottom:18px}
+.combo-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:22px;min-height:120px}
+.combo-list li{display:flex;align-items:flex-start;gap:9px;font-size:.82rem;color:var(--t2);line-height:1.5}
+.combo-list li svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2.5;flex-shrink:0;margin-top:1px}
+.combo-btn{display:block;width:100%;text-align:center;background:transparent;border:1px solid rgba(204,0,0,.4);color:var(--red);font-size:.82rem;font-weight:700;padding:11px;border-radius:var(--r);cursor:pointer;transition:all .2s}
+.combo-card.destaque .combo-btn{background:var(--red);border-color:var(--red);color:#fff}
+.combo-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
 
-/* BOOKING FORM */
-#agendar{background:var(--bg2);border-top:1px solid var(--border);padding:72px 0}
-.form-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start}
-.form-info h2{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;letter-spacing:-.04em;margin-bottom:12px}
-.form-info p{font-size:.92rem;color:var(--text2);line-height:1.7;margin-bottom:24px}
-.trust-list{display:flex;flex-direction:column;gap:9px}
-.trust-list li{display:flex;align-items:center;gap:9px;font-size:.83rem;color:var(--text3);list-style:none}
-.trust-list li svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2;flex-shrink:0}
-.selected-summary{margin-top:28px;padding:16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);min-height:64px}
-.selected-summary-title{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:10px}
-.selected-chips{display:flex;flex-wrap:wrap;gap:6px;min-height:28px}
-.sel-chip{display:flex;align-items:center;gap:6px;background:rgba(204,0,0,.12);border:1px solid rgba(204,0,0,.3);color:var(--red);font-size:.75rem;font-weight:600;padding:5px 10px;border-radius:20px}
-.sel-chip-remove{cursor:pointer;display:flex;align-items:center;opacity:.7;transition:opacity .2s;background:none;border:none;padding:0;color:inherit}
-.sel-chip-remove:hover{opacity:1}
-.sel-chip-remove svg{width:10px;height:10px;stroke:var(--red);fill:none;stroke-width:2.5}
-.empty-chips{font-size:.8rem;color:var(--text3);font-style:italic;align-self:center}
-.booking-form{display:flex;flex-direction:column;gap:14px}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.f-group label{display:block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:6px}
-.f-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:12px 14px;font-size:.9rem;color:var(--text);outline:none;transition:border .2s,box-shadow .2s;font-family:inherit}
-.f-input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(204,0,0,.12)}
-.f-input::placeholder{color:var(--text3)}
-select.f-input{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.svc-chips-inline{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
-.chip-inline{padding:7px 13px;border-radius:20px;border:1px solid var(--border2);background:var(--bg3);font-size:.78rem;color:var(--text2);cursor:pointer;transition:all .2s;user-select:none;white-space:nowrap}
-.chip-inline:hover{border-color:rgba(204,0,0,.3);color:var(--text)}
-.chip-inline.on{border-color:var(--red);color:var(--red);background:rgba(204,0,0,.1);font-weight:600}
-.btn-submit{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--red);color:#fff;font-size:.95rem;font-weight:700;letter-spacing:.04em;padding:16px;border-radius:var(--r);border:none;cursor:pointer;transition:all .25s;margin-top:4px}
-.btn-submit:hover{background:var(--red2);transform:translateY(-1px)}
-.btn-submit:active{transform:translateY(0)}
-.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.form-note{font-size:.74rem;color:var(--text3);text-align:center;line-height:1.6;margin-top:4px}
-.form-label-hint{color:var(--text3);font-size:.65rem;text-transform:none;letter-spacing:0;font-weight:400}
+/* ── SERVICES SECTION ── */
+#servicos{background:var(--s1);padding:72px 0;border-top:1px solid var(--bdr)}
+#servicos .top-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.svc-count{font-size:.78rem;color:var(--t3)}
+.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr)}
+.svc-card{background:var(--s2);padding:24px 20px;display:flex;flex-direction:column;gap:0;transition:background .2s;position:relative;cursor:pointer}
+.svc-card:hover{background:var(--s3)}
+.svc-card.active{background:rgba(204,0,0,.06)}
+.svc-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.svc-icon-wrap{width:38px;height:38px;background:rgba(204,0,0,.1);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc-icon-wrap svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:1.8}
+.svc-novo{font-size:.58rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);padding:2px 6px;border-radius:2px}
+.svc-name{font-size:.9rem;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.svc-desc{font-size:.75rem;color:var(--t2);line-height:1.55;flex:1;margin-bottom:18px}
+.svc-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px 12px;background:var(--red);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:var(--r);border:none;cursor:pointer;transition:background .2s}
+.svc-btn:hover{background:var(--red-h)}
+.svc-card.active .svc-btn{background:var(--s4);color:var(--red);border:1px solid rgba(204,0,0,.3)}
+.svc-btn svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+.svc-card.active .svc-btn svg{stroke:var(--red)}
 
-/* GOTO BTN */
-.goto-btn{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;font-size:.9rem;font-weight:700;letter-spacing:.04em;padding:14px 32px;border-radius:var(--r);border:none;cursor:pointer;text-decoration:none;transition:all .25s}
-.goto-btn:hover{background:var(--red2);transform:translateY(-1px)}
-.goto-btn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+/* SERVICE DETAIL DRAWER */
+.svc-drawer{display:none;background:var(--s3);border-top:1px solid var(--bdr);padding:20px;grid-column:1/-1}
+.svc-drawer.open{display:block}
+.drawer-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:700px}
+.drawer-title{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:10px}
+.drawer-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.drawer-list li{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--t2);line-height:1.5}
+.drawer-list li::before{content:'';flex-shrink:0;width:4px;height:4px;border-radius:50%;background:var(--red);margin-top:7px}
+.drawer-list li.warn{color:var(--t3)}
+.drawer-list li.warn::before{background:var(--t3)}
+.drawer-close{font-size:.72rem;color:var(--t3);cursor:pointer;margin-top:14px;display:inline-flex;align-items:center;gap:5px}
+.drawer-close:hover{color:var(--t1)}
+.drawer-close svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2}
 
-/* FOOTER */
-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 20px;text-align:center}
-.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px}
-.footer-links a{font-size:.78rem;color:var(--text3);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--text)}
-.footer-copy{font-size:.72rem;color:var(--text3)}
+/* ── BOOKING FORM SECTION ── */
+#form-section{background:var(--bg);padding:80px 0;border-top:1px solid var(--bdr)}
+.form-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.form-left h2{margin-bottom:10px}
+.form-left p{font-size:.92rem;color:var(--t2);line-height:1.7;max-width:440px;margin-bottom:28px}
+.form-checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.form-checklist li{display:flex;align-items:center;gap:9px;font-size:.82rem;color:var(--t3);list-style:none}
+.form-checklist li svg{width:13px;height:13px;stroke:var(--red);fill:none;stroke-width:2.5;flex-shrink:0}
 
-/* LOADER */
-.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+/* SELECTED SERVICES PANEL */
+.sel-panel{background:var(--s2);border:1px solid var(--bdr2);border-radius:8px;padding:16px;min-height:72px;margin-bottom:28px}
+.sel-panel-title{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--t3);margin-bottom:10px}
+.sel-chips{display:flex;flex-wrap:wrap;gap:6px}
+.sel-chip{display:flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;color:var(--red);background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.25);padding:5px 10px;border-radius:20px}
+.sel-chip button{background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;color:var(--red);opacity:.7}
+.sel-chip button:hover{opacity:1}
+.sel-chip button svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:3}
+.sel-empty{font-size:.78rem;color:var(--t3);font-style:italic}
 
-/* TOAST */
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:2000;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:12px 20px;font-size:.85rem;transition:transform .35s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;pointer-events:none}
-#toast.show{transform:translateX(-50%) translateY(0)}
-#toast.ok{border-color:rgba(37,211,102,.3);color:#25D366}
-#toast.err{border-color:rgba(204,0,0,.3);color:var(--red)}
+/* FORM FIELDS */
+.form-card{background:var(--s2);border:1px solid var(--bdr2);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)}
+.fi{background:var(--s3);border:1px solid var(--bdr2);border-radius:var(--r);padding:11px 13px;font-size:.88rem;color:var(--t1);outline:none;font-family:inherit;width:100%;transition:border .2s}
+.fi:focus{border-color:rgba(204,0,0,.5)}
+.fi::placeholder{color:var(--t3)}
+select.fi{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--red);color:#fff;font-size:.95rem;font-weight:800;letter-spacing:.03em;padding:15px;border-radius:var(--r);border:none;cursor:pointer;transition:background .2s}
+.submit-btn:hover{background:var(--red-h)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+.submit-btn svg{width:18px;height:18px;fill:#fff}
+.form-disclaimer{font-size:.7rem;color:var(--t3);text-align:center;line-height:1.55}
+.chips-bar{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.fchip{font-size:.74rem;padding:6px 12px;border-radius:20px;border:1px solid var(--bdr2);background:var(--s3);color:var(--t2);cursor:pointer;transition:all .2s;user-select:none}
+.fchip:hover{border-color:rgba(204,0,0,.3);color:var(--t1)}
+.fchip.on{border-color:var(--red);background:rgba(204,0,0,.1);color:var(--red);font-weight:600}
 
-/* FADE */
-.fade{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.fade.in{opacity:1;transform:translateY(0)}
+/* ── STICKY BOTTOM BAR ── */
+#sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(13,13,13,.97);border-top:1px solid rgba(204,0,0,.2);padding:12px 24px;display:flex;align-items:center;gap:16px;transform:translateY(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);backdrop-filter:blur(12px)}
+#sticky-bar.show{transform:translateY(0)}
+.sb-count{font-size:.82rem;color:var(--t2);white-space:nowrap}
+.sb-count span{font-weight:800;color:var(--t1)}
+.sb-chips{flex:1;display:flex;flex-wrap:wrap;gap:5px;overflow:hidden;max-height:26px}
+.sb-chip{font-size:.7rem;font-weight:600;color:var(--red);background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.2);padding:3px 8px;border-radius:20px;white-space:nowrap}
+.sb-btn{background:var(--red);color:#fff;font-size:.82rem;font-weight:800;padding:10px 22px;border-radius:var(--r);border:none;cursor:pointer;white-space:nowrap;transition:background .2s;flex-shrink:0}
+.sb-btn:hover{background:var(--red-h)}
 
-/* RESPONSIVE */
-@media(max-width:840px){.form-grid{grid-template-columns:1fr;gap:40px}.f-row{grid-template-columns:1fr}}
-@media(max-width:600px){.services-grid{grid-template-columns:1fr}#hero{padding:56px 16px 40px}.section{padding:52px 0}.container{padding:0 16px}}
+/* ── FOOTER ── */
+footer{background:var(--s1);border-top:1px solid var(--bdr);padding:24px;text-align:center}
+.foot-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+.foot-links a{font-size:.76rem;color:var(--t3);transition:color .2s}
+.foot-links a:hover{color:var(--t1)}
+.foot-copy{font-size:.7rem;color:var(--t3)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;z-index:300;background:var(--s2);border:1px solid var(--bdr2);border-radius:var(--r);padding:10px 18px;font-size:.82rem;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+#toast.ok{border-color:rgba(34,197,94,.3);color:var(--green)}
+#toast.err{border-color:rgba(204,0,0,.3);color:var(--red-s)}
+
+/* ── FADE ── */
+.fade{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.fade.in{opacity:1;transform:none}
+
+/* ── SPINNER ── */
+.spin{width:18px;height:18px;border:2px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:rot .6s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){.services-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}.hero-form-card{position:static;margin-top:32px}
+  .combos-grid{grid-template-columns:1fr}.form-layout{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+  .drawer-inner{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  #hero{padding:48px 16px}#combos,#servicos,#form-section{padding:52px 0}
+  .container{padding:0 16px}
+  #topbar{padding:0 16px}.tb-wa span{display:none}
+}
+@media(max-width:400px){.services-grid{grid-template-columns:1fr}.fg-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <div class="nav-logo-circle">RS</div>
-      <span class="nav-logo-text">Red <span class="accent">Studio</span></span>
-    </a>
-    <a href="/" class="nav-back">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      Voltar ao site
-    </a>
+<!-- TOPBAR -->
+<nav id="topbar">
+  <div class="tb-logo">
+    <div class="tb-dot">RS</div>
+    <div class="tb-name">Red <span class="red">Studio</span></div>
   </div>
+  <a href="/" class="tb-back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar
+  </a>
+  <a href="https://wa.me/5531995850076" target="_blank" class="tb-wa">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>(31) 99585-0076</span>
+  </a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-tag">Agende seu servico</div>
-  <h1>Escolha o servico ideal<br>para o seu <span class="accent">veiculo</span></h1>
-  <p>Clique em qualquer servico para ver os detalhes e selecione tudo que deseja — atendemos Conselheiro Lafaiete e regiao.</p>
-  <div class="hero-trust">
-    <div class="trust-item">
-      <svg viewBox="0 0 24 24"><polygon class="star-fill" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      5.0 no Google (57 avaliacoes)
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill"><span class="hero-pill-dot"></span>Atendendo em Conselheiro Lafaiete</div>
+      <h1>Seu carro pode<br>voltar a ser <em>zero km.</em></h1>
+      <p>Especialistas em estetica automotiva premium. Higienizacao, polimento, protecao — resultados que voce ve e sente. Agendamento simples, resultado profissional.</p>
+      <div class="hero-stars">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        5.0 — 57 avaliacoes no Google
+      </div>
+      <div class="hero-trust-row">
+        <div class="htr"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</div>
+        <div class="htr"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resposta rapida no WhatsApp</div>
+        <div class="htr"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Confirmacao garantida</div>
+      </div>
     </div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Confirmacao em minutos</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</div>
+    <div class="hero-form-card">
+      <div class="hfc-title">Agende agora</div>
+      <div class="hfc-sub">Preencha abaixo e entraremos em contato em minutos.</div>
+      <div class="hfc-group">
+        <label for="h-name">Seu nome</label>
+        <input class="hfc-input" type="text" id="h-name" placeholder="Joao Silva" autocomplete="name">
+      </div>
+      <div class="hfc-group">
+        <label for="h-phone">WhatsApp</label>
+        <input class="hfc-input" type="tel" id="h-phone" placeholder="(31) 9 9999-9999" autocomplete="tel">
+      </div>
+      <div class="hfc-group">
+        <label for="h-svc">Servico de interesse</label>
+        <select class="hfc-input" id="h-svc">
+          <option value="">Selecionar...</option>
+          <option>Limpeza Interna</option>
+          <option>Limpeza Externa</option>
+          <option>Higienizacao de Bancos</option>
+          <option>Higienizacao Completa</option>
+          <option>Polimento Tecnico</option>
+          <option>Limpeza do Motor</option>
+          <option>Cera e Protecao</option>
+          <option>Revitalizacao de Plasticos</option>
+          <option>Cristalizacao de Vidros</option>
+          <option>Micro Pintura</option>
+        </select>
+      </div>
+      <button class="hfc-btn" id="h-submit" type="button">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero agendar pelo WhatsApp
+      </button>
+      <div class="hfc-note">Ou continue para escolher varios servicos abaixo</div>
+    </div>
   </div>
 </section>
 
-<section class="section" id="servicos">
+<!-- COMBOS -->
+<section id="combos">
   <div class="container">
-    <div class="section-tag fade">Nossos servicos</div>
-    <h2 class="section-title fade">O que fazemos pelo<br>seu carro</h2>
-    <p class="section-sub fade">Clique num servico para ver o que esta incluido. Selecione um ou mais para o agendamento.</p>
+    <div class="section-label fade">Combos populares</div>
+    <h2 class="sh fade">Pacotes com desconto</h2>
+    <p class="section-intro fade">Combine servicos e economize. Nossos combos sao pensados para o maximo resultado no menor tempo.</p>
+    <div class="combos-grid">
+
+      <div class="combo-card fade">
+        <div class="combo-name">Combo Essencial</div>
+        <div class="combo-sub">Limpeza completa por dentro e por fora</div>
+        <ul class="combo-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Limpeza Interna (aspiracao + painel)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Limpeza Externa (carroceria + rodas)</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Aromatizacao</li>
+        </ul>
+        <button class="combo-btn" data-combo="Limpeza Interna,Limpeza Externa" type="button">Agendar este combo</button>
+      </div>
+
+      <div class="combo-card destaque fade" style="transition-delay:.08s">
+        <div class="combo-badge">Mais pedido</div>
+        <div class="combo-name">Combo Higienizacao</div>
+        <div class="combo-sub">Carro renovado de verdade, por dentro e por fora</div>
+        <ul class="combo-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Limpeza Interna completa</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Higienizacao profunda de bancos</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Limpeza Externa + secagem</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Aromatizacao premium</li>
+        </ul>
+        <button class="combo-btn" data-combo="Higienizacao Completa" type="button">Agendar este combo</button>
+      </div>
+
+      <div class="combo-card fade" style="transition-delay:.16s">
+        <div class="combo-name">Combo Premium</div>
+        <div class="combo-sub">O tratamento mais completo que seu carro pode ter</div>
+        <ul class="combo-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Higienizacao Completa</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Polimento Tecnico</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cera e Protecao UV</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cristalizacao de Vidros</li>
+        </ul>
+        <button class="combo-btn" data-combo="Higienizacao Completa,Polimento Tecnico,Cera e Protecao,Cristalizacao de Vidros" type="button">Agendar este combo</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicos">
+  <div class="container">
+    <div class="top-row">
+      <div>
+        <div class="section-label fade">Servicos automotivos</div>
+        <h2 class="sh fade">Todos os servicos</h2>
+      </div>
+      <div class="svc-count fade">Clique em "Agendar" para adicionar ao seu pedido</div>
+    </div>
 
     <div class="services-grid" id="services-grid">
 
-      <div class="svc-card fade" data-id="limpeza-interna">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-          </div>
-          <span class="svc-badge">Essencial</span>
+      <!-- 1 -->
+      <div class="svc-card" data-id="limpeza-interna">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         </div>
         <div class="svc-name">Limpeza Interna</div>
-        <div class="svc-brief">Aspiracao completa, limpeza do painel, portas e tapetes. Carro limpo por dentro sem higienizacao profunda dos bancos.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Aspiracao completa, limpeza do painel, portas e tapetes. Carro limpo por dentro.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="limpeza-externa">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 14s.5-4 8-4 8 4 8 4"/><path d="M2 18h20"/><line x1="12" y1="4" x2="12" y2="8"/><path d="M10 4l2-2 2 2"/></svg>
-          </div>
-          <span class="svc-badge">Essencial</span>
+      <!-- 2 -->
+      <div class="svc-card" data-id="limpeza-externa">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><path d="M4 14s.5-4 8-4 8 4 8 4"/><path d="M2 18h20"/><line x1="12" y1="4" x2="12" y2="8"/><path d="M10 4l2-2 2 2"/></svg></div>
         </div>
         <div class="svc-name">Limpeza Externa</div>
-        <div class="svc-brief">Lavagem completa da carroceria, vidros externos, rodas e pneus. Secagem com flanela premium.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Lavagem da carroceria, rodas e pneus. Secagem com flanela premium.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="higienizacao-bancos">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="12" rx="2"/><path d="M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/><circle cx="12" cy="14" r="2"/></svg>
-          </div>
-          <span class="svc-badge">Especializado</span>
+      <!-- 3 -->
+      <div class="svc-card" data-id="higienizacao-bancos">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="12" rx="2"/><path d="M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/><circle cx="12" cy="14" r="2"/></svg></div>
         </div>
         <div class="svc-name">Higienizacao de Bancos</div>
-        <div class="svc-brief">Limpeza profunda de tecido, couro ou sintetico. Remocao de manchas, odores e bacterias. Tempo de secagem incluso.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Limpeza profunda de tecido, couro ou sintetico. Remove manchas e odores.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="higienizacao-completa">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <span class="svc-badge">Pacote</span>
+      <!-- 4 -->
+      <div class="svc-card" data-id="higienizacao-completa">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         </div>
         <div class="svc-name">Higienizacao Completa</div>
-        <div class="svc-brief">Pacote all-in-one: Limpeza Interna + Higienizacao de Bancos + Limpeza Externa. Carro como saido da concessionaria.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Pacote total: limpeza interna + higienizacao de bancos + limpeza externa.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="polimento">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
-          </div>
-          <span class="svc-badge">Especializado</span>
+      <!-- 5 -->
+      <div class="svc-card" data-id="polimento">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div>
         </div>
         <div class="svc-name">Polimento Tecnico</div>
-        <div class="svc-brief">Remocao de riscos superficiais, swirls e oxidacao. Pintura com acabamento espelhado e brilho renovado.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Remove riscos, swirls e oxidacao. Pintura com acabamento espelhado.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="motor">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-          </div>
-          <span class="svc-badge">Especializado</span>
+      <!-- 6 -->
+      <div class="svc-card" data-id="motor">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
         </div>
         <div class="svc-name">Limpeza do Motor</div>
-        <div class="svc-brief">Desengraxamento completo, hidratacao de borrachas e plasticos. Compartimento renovado e protegido.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Desengraxamento completo, borrachas hidratadas, compartimento renovado.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="cera">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
-          </div>
-          <span class="svc-badge">Protecao</span>
+      <!-- 7 -->
+      <div class="svc-card" data-id="cera">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg></div>
         </div>
         <div class="svc-name">Cera e Protecao</div>
-        <div class="svc-brief">Aplicacao de cera + revitalizador de plasticos internos e externos. Protecao UV e brilho duradouro.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Aplicacao de cera + revitalizador de plasticos. Protecao UV de longa duracao.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="plasticos">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-          </div>
-          <span class="svc-badge">Estetica</span>
+      <!-- 8 -->
+      <div class="svc-card" data-id="plasticos">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
         </div>
         <div class="svc-name">Revitalizacao de Plasticos</div>
-        <div class="svc-brief">Restaura o preto original de para-choques, soleiras, frisos e plasticos desbotados. Protecao contra raios UV.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Restaura o preto original de para-choques e frisos desbotados pelo sol.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="vidros">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <span class="svc-badge">Protecao</span>
+      <!-- 9 -->
+      <div class="svc-card" data-id="vidros">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
         </div>
         <div class="svc-name">Cristalizacao de Vidros</div>
-        <div class="svc-brief">Tratamento hidrofobico nos vidros. Agua escorrega com facilidade, visibilidade na chuva e chuva acida prevenida.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        </div>
+        <div class="svc-desc">Tratamento hidrofobico: agua escorrega facilmente, melhor visibilidade na chuva.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
       </div>
 
-      <div class="svc-card fade" data-id="micro-pintura">
-        <div class="svc-header">
-          <div class="svc-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-          </div>
-          <span class="svc-badge novo">Novo</span>
+      <!-- 10 -->
+      <div class="svc-card" data-id="micro-pintura">
+        <div class="svc-card-top">
+          <div class="svc-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <span class="svc-novo">Novo</span>
         </div>
         <div class="svc-name">Micro Pintura</div>
-        <div class="svc-brief">Correcao de riscos profundos e retoques de pintura. Para danos que o polimento convencional nao consegue corrigir.</div>
-        <div class="svc-footer">
-          <div class="svc-see-more">Ver detalhes <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-          <div class="svc-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="svc-desc">Correcao de riscos profundos que o polimento nao remove. Retoque preciso.</div>
+        <button class="svc-btn" type="button">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Agendar
+        </button>
+      </div>
+
+      <!-- DRAWER (spans full row) -->
+      <div class="svc-drawer" id="svc-drawer">
+        <div class="drawer-inner" id="drawer-inner"></div>
+        <div class="drawer-close" id="drawer-close">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Fechar detalhes
         </div>
       </div>
 
-    </div>
-
-    <div style="text-align:center;margin-top:32px" class="fade">
-      <a href="#agendar" class="goto-btn">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Ir para o agendamento
-      </a>
     </div>
   </div>
 </section>
 
-<section id="agendar">
+<!-- BOOKING FORM -->
+<section id="form-section">
   <div class="container">
-    <div class="form-grid">
-      <div class="form-info fade">
-        <div class="section-tag">Agendamento</div>
-        <h2>Pronto para transformar<br>seu veiculo?</h2>
-        <p>Preencha o formulario e nossa equipe confirmara o horario pelo WhatsApp. Rapido e sem complicacao.</p>
-        <ul class="trust-list">
+    <div class="form-layout">
+      <div class="form-left fade">
+        <div class="section-label">Agendamento</div>
+        <h2 class="sh" style="margin-bottom:10px">Faca o seu<br>agendamento</h2>
+        <p>Preencha o formulario ao lado. Nossa equipe entra em contato pelo WhatsApp para confirmar data e hora.</p>
+        <ul class="form-checklist">
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resposta em minutos no WhatsApp</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Confirmacao garantida antes da visita</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seg-Sex 8h-18h30 | Sab 8h-14h</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Atendemos Conselheiro Lafaiete e regiao</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seg–Sex 8h–18h30 | Sab 8h–14h</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>57 avaliacoes 5 estrelas no Google</li>
         </ul>
-        <div class="selected-summary">
-          <div class="selected-summary-title">Servicos selecionados</div>
-          <div class="selected-chips" id="selected-chips-display"></div>
+        <div class="sel-panel">
+          <div class="sel-panel-title">Servicos selecionados</div>
+          <div class="sel-chips" id="sel-chips-display"></div>
         </div>
       </div>
-      <div class="fade" style="transition-delay:.12s">
-        <div class="booking-form">
-          <div class="f-row">
-            <div class="f-group">
-              <label for="f-name">Nome completo *</label>
-              <input class="f-input" type="text" id="f-name" placeholder="Joao Silva" autocomplete="name">
-            </div>
-            <div class="f-group">
-              <label for="f-phone">WhatsApp *</label>
-              <input class="f-input" type="tel" id="f-phone" placeholder="(31) 9 9999-9999" autocomplete="tel">
-            </div>
+      <div class="fade" style="transition-delay:.1s">
+        <div class="form-card" id="form-card">
+          <div class="fg">
+            <label for="f-name">Nome completo *</label>
+            <input class="fi" type="text" id="f-name" placeholder="Joao Silva" autocomplete="name">
           </div>
-          <div class="f-group">
+          <div class="fg">
+            <label for="f-phone">WhatsApp *</label>
+            <input class="fi" type="tel" id="f-phone" placeholder="(31) 9 9999-9999" autocomplete="tel">
+          </div>
+          <div class="fg">
             <label for="f-vehicle">Veiculo (modelo, cor, ano)</label>
-            <input class="f-input" type="text" id="f-vehicle" placeholder="Ex: Honda HRV 2022 Prata">
+            <input class="fi" type="text" id="f-vehicle" placeholder="Ex: Honda HRV 2022 Prata">
           </div>
-          <div class="f-row">
-            <div class="f-group">
+          <div class="fg-row">
+            <div class="fg">
               <label for="f-date">Data preferida</label>
-              <input class="f-input" type="date" id="f-date">
+              <input class="fi" type="date" id="f-date">
             </div>
-            <div class="f-group">
-              <label for="f-time">Horario preferido</label>
-              <select class="f-input" id="f-time">
-                <option value="">Qualquer horario</option>
+            <div class="fg">
+              <label for="f-time">Horario</label>
+              <select class="fi" id="f-time">
+                <option value="">Qualquer</option>
                 <option value="08:00">08:00</option>
                 <option value="09:00">09:00</option>
                 <option value="10:00">10:00</option>
@@ -417,30 +544,30 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 20px
               </select>
             </div>
           </div>
-          <div class="f-group">
-            <label>Servicos desejados <span class="form-label-hint">(ou selecione nos cards acima)</span></label>
-            <div class="svc-chips-inline" id="form-chips">
-              <div class="chip-inline" data-svc="Limpeza Interna">Limpeza Interna</div>
-              <div class="chip-inline" data-svc="Limpeza Externa">Limpeza Externa</div>
-              <div class="chip-inline" data-svc="Higienizacao de Bancos">Hig. Bancos</div>
-              <div class="chip-inline" data-svc="Higienizacao Completa">Hig. Completa</div>
-              <div class="chip-inline" data-svc="Polimento Tecnico">Polimento</div>
-              <div class="chip-inline" data-svc="Limpeza do Motor">Motor</div>
-              <div class="chip-inline" data-svc="Cera e Protecao">Cera</div>
-              <div class="chip-inline" data-svc="Revitalizacao de Plasticos">Plasticos</div>
-              <div class="chip-inline" data-svc="Cristalizacao de Vidros">Vidros</div>
-              <div class="chip-inline" data-svc="Micro Pintura">Micro Pintura</div>
+          <div class="fg">
+            <label>Servicos <span style="font-size:.62rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--t3)">(clique para selecionar)</span></label>
+            <div class="chips-bar" id="chips-bar">
+              <div class="fchip" data-svc="Limpeza Interna">Limpeza Interna</div>
+              <div class="fchip" data-svc="Limpeza Externa">Limpeza Externa</div>
+              <div class="fchip" data-svc="Higienizacao de Bancos">Hig. Bancos</div>
+              <div class="fchip" data-svc="Higienizacao Completa">Hig. Completa</div>
+              <div class="fchip" data-svc="Polimento Tecnico">Polimento</div>
+              <div class="fchip" data-svc="Limpeza do Motor">Motor</div>
+              <div class="fchip" data-svc="Cera e Protecao">Cera</div>
+              <div class="fchip" data-svc="Revitalizacao de Plasticos">Plasticos</div>
+              <div class="fchip" data-svc="Cristalizacao de Vidros">Vidros</div>
+              <div class="fchip" data-svc="Micro Pintura">Micro Pintura</div>
             </div>
           </div>
-          <div class="f-group">
+          <div class="fg">
             <label for="f-obs">Observacoes</label>
-            <textarea class="f-input" id="f-obs" rows="3" placeholder="Alguma mancha especifica, urgencia, duvida..."></textarea>
+            <textarea class="fi" id="f-obs" rows="2" placeholder="Alguma mancha especifica, urgencia, duvida..."></textarea>
           </div>
-          <button class="btn-submit" id="f-submit" type="button">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <button class="submit-btn" id="f-submit" type="button">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Confirmar Agendamento
           </button>
-          <p class="form-note">Voce sera redirecionado para a pagina de confirmacao. Tambem entraremos em contato pelo WhatsApp.</p>
+          <p class="form-disclaimer">Voce sera contatado pelo WhatsApp para confirmacao. Seg-Sex 8h-18h30.</p>
         </div>
       </div>
     </div>
@@ -448,417 +575,302 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 20px
 </section>
 
 <footer>
-  <div class="footer-links">
+  <div class="foot-links">
     <a href="/">Inicio</a>
     <a href="/#gallery">Galeria</a>
     <a href="/#reviews">Avaliacoes</a>
     <a href="tel:+5531995850076">(31) 99585-0076</a>
+    <a href="/painel" style="color:var(--t3)">Admin</a>
   </div>
-  <div class="footer-copy">2025 Red Studio Automotive — CNPJ 39.812.362/0001-12 — Conselheiro Lafaiete, MG</div>
+  <div class="foot-copy">2025 Red Studio Automotive — CNPJ 39.812.362/0001-12 — Conselheiro Lafaiete, MG</div>
 </footer>
 
-<div id="toast"></div>
-
-<!-- MODAL -->
-<div id="modal-overlay" role="dialog" aria-modal="true">
-  <div id="modal-box">
-    <div class="modal-head">
-      <div class="modal-tag" id="modal-tag"></div>
-      <div class="modal-title" id="modal-title"></div>
-      <button class="modal-close" id="modal-close" aria-label="Fechar" type="button">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section-title">O que esta incluso</div>
-      <ul class="modal-includes" id="modal-includes"></ul>
-      <div class="modal-obs" id="modal-obs">
-        <strong class="modal-obs-label">Observacao</strong>
-        <span id="modal-obs-text"></span>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-add" id="modal-add-btn" type="button">Adicionar ao agendamento</button>
-        <button class="btn-cancel" id="modal-cancel-btn" type="button">Fechar</button>
-      </div>
-    </div>
-  </div>
+<!-- STICKY BAR -->
+<div id="sticky-bar">
+  <div class="sb-count">Servicos: <span id="sb-count-num">0</span></div>
+  <div class="sb-chips" id="sb-chips"></div>
+  <button class="sb-btn" id="sb-scroll-btn" type="button">Agendar agora</button>
 </div>
+
+<div id="toast"></div>
 
 <script>
 (function(){
 'use strict';
 
-var SERVICES = {
-  'limpeza-interna': {
-    name: 'Limpeza Interna',
-    tag: 'Essencial',
-    includes: [
-      'Aspiracao completa do habitaculo (bancos, tapetes, porta-malas)',
-      'Limpeza e higienizacao do painel e console',
-      'Limpeza das portas, soleiras e teto',
-      'Limpeza dos vidros internos',
-      'Aromatizacao do ambiente'
-    ],
-    warnings: [
-      'Nao inclui higienizacao profunda dos bancos (limpeza a seco/umida especifica)',
-      'Para limpeza profunda dos bancos, selecione "Higienizacao de Bancos"'
-    ],
-    obs: 'A Limpeza Interna e o servico basico de aspiracao e limpeza. Para manchas, odores ou tecidos sujos, recomendamos tambem a Higienizacao de Bancos.'
+/* ── DATA ── */
+var SVC = {
+  'limpeza-interna':{
+    name:'Limpeza Interna',
+    includes:['Aspiracao completa (bancos, tapetes, porta-malas)','Limpeza do painel e console','Limpeza das portas, soleiras e teto','Vidros internos limpos','Aromatizacao'],
+    warnings:['Nao inclui higienizacao profunda dos bancos','Para manchas nos bancos, selecione tambem Higienizacao de Bancos']
   },
-  'limpeza-externa': {
-    name: 'Limpeza Externa',
-    tag: 'Essencial',
-    includes: [
-      'Lavagem completa da carroceria com shampoo automotivo',
-      'Limpeza e brilho das rodas e pneus',
-      'Limpeza dos vidros externos',
-      'Limpeza dos para-choques e detalhes',
-      'Secagem completa com flanela premium'
-    ],
-    warnings: [],
-    obs: null
+  'limpeza-externa':{
+    name:'Limpeza Externa',
+    includes:['Lavagem completa com shampoo automotivo','Rodas e pneus limpos e brilhosos','Vidros externos','Para-choques e detalhes','Secagem com flanela premium'],
+    warnings:[]
   },
-  'higienizacao-bancos': {
-    name: 'Higienizacao de Bancos',
-    tag: 'Especializado',
-    includes: [
-      'Aplicacao de produto especifico para o material (tecido, couro ou sintetico)',
-      'Irrigacao e extracao profunda de sujeira embutida',
-      'Tratamento de manchas especificas (cafe, gordura, umidade)',
-      'Eliminacao de odores e bacterias',
-      'Aspiracao e finalizacao dos bancos'
-    ],
-    warnings: ['Tempo de secagem: 4 a 8 horas (carro fica no estabelecimento)'],
-    obs: 'Este servico e diferente da Limpeza Interna basica. E um processo umido/seco especializado para higienizar os bancos em profundidade, remover manchas e odores permanentes.'
+  'higienizacao-bancos':{
+    name:'Higienizacao de Bancos',
+    includes:['Produto especifico para tecido, couro ou sintetico','Irrigacao e extracao profunda','Tratamento de manchas (cafe, gordura, umidade)','Eliminacao de odores e bacterias','Finalizacao e aspiracao'],
+    warnings:['Tempo de secagem: 4 a 8 horas no estabelecimento']
   },
-  'higienizacao-completa': {
-    name: 'Higienizacao Completa',
-    tag: 'Pacote',
-    includes: [
-      'Tudo da Limpeza Interna (aspiracao, painel, portas, teto)',
-      'Tudo da Higienizacao de Bancos (limpeza profunda, manchas, odores)',
-      'Tudo da Limpeza Externa (carroceria, rodas, vidros, secagem)',
-      'Aromatizacao premium do habitaculo',
-      'Carro entregue como novo'
-    ],
-    warnings: ['Tempo de permanencia: estimado em 4 a 6 horas (pelo processo de secagem dos bancos)'],
-    obs: 'O pacote completo e a melhor relacao custo-beneficio para quem quer um carro totalmente renovado por dentro e por fora.'
+  'higienizacao-completa':{
+    name:'Higienizacao Completa',
+    includes:['Limpeza Interna completa','Higienizacao profunda dos bancos','Limpeza Externa + secagem','Aromatizacao premium'],
+    warnings:['Permanencia estimada: 4 a 6 horas']
   },
-  'polimento': {
-    name: 'Polimento Tecnico',
-    tag: 'Especializado',
-    includes: [
-      'Descontaminacao da pintura (argila automotiva)',
-      'Polimento de correcao de riscos superficiais e swirls',
-      'Eliminacao de oxidacao e manchas de chuva acida',
-      'Aplicacao de polish de finalizacao',
-      'Resultado espelhado na pintura'
-    ],
-    warnings: ['Nao remove riscos profundos que atingem o primer ou metal — para esses, ver Micro Pintura'],
-    obs: null
+  'polimento':{
+    name:'Polimento Tecnico',
+    includes:['Descontaminacao com argila automotiva','Polimento de correcao de riscos e swirls','Eliminacao de oxidacao e chuva acida','Polish de finalizacao','Resultado espelhado'],
+    warnings:['Riscos que atingem o primer exigem Micro Pintura']
   },
-  'motor': {
-    name: 'Limpeza do Motor',
-    tag: 'Especializado',
-    includes: [
-      'Protecao de componentes eletricos e eletronicos',
-      'Aplicacao de desengraxante automotivo',
-      'Remocao de graxas, oleos e sujeira acumulada',
-      'Limpeza dos plasticos do compartimento',
-      'Hidratacao de mangueiras e borrachas'
-    ],
-    warnings: [],
-    obs: 'O processo e feito com cuidado para nao danificar componentes eletricos. Compartimento completamente renovado em aparencia.'
+  'motor':{
+    name:'Limpeza do Motor',
+    includes:['Protecao de componentes eletricos','Aplicacao de desengraxante','Remocao de graxas e oleos','Plasticos do compartimento limpos','Borrachas e mangueiras hidratadas'],
+    warnings:[]
   },
-  'cera': {
-    name: 'Cera e Protecao',
-    tag: 'Protecao',
-    includes: [
-      'Aplicacao de cera carnauba ou sintetica na pintura',
-      'Revitalizacao de plasticos externos (para-choques, espelhos)',
-      'Revitalizacao de plasticos internos (painel, portas)',
-      'Protecao contra raios UV e desbotamento',
-      'Brilho e hidratacao prolongados'
-    ],
-    warnings: [],
-    obs: null
+  'cera':{
+    name:'Cera e Protecao',
+    includes:['Cera carnauba ou sintetica na pintura','Revitalizacao de plasticos externos','Revitalizacao de plasticos internos','Protecao contra raios UV','Brilho prolongado'],
+    warnings:[]
   },
-  'plasticos': {
-    name: 'Revitalizacao de Plasticos',
-    tag: 'Estetica',
-    includes: [
-      'Restauracao do preto original de para-choques',
-      'Tratamento de frisos, soleiras e molduras desbotadas',
-      'Aplicacao de produto especifico anti-UV',
-      'Resultado duradouro contra desbotamento'
-    ],
-    warnings: [],
-    obs: 'Ideal para veiculos com plasticos acinzentados ou esbranquicados. O tratamento devolve o preto profundo original.'
+  'plasticos':{
+    name:'Revitalizacao de Plasticos',
+    includes:['Restauracao do preto original de para-choques','Tratamento de frisos e soleiras','Produto anti-UV especifico','Resultado duradouro'],
+    warnings:[]
   },
-  'vidros': {
-    name: 'Cristalizacao de Vidros',
-    tag: 'Protecao',
-    includes: [
-      'Limpeza e preparacao dos vidros',
-      'Aplicacao de tratamento hidrofobico (nanotech)',
-      'Agua escorrega com facilidade na chuva',
-      'Reducao de chuva acida nos vidros',
-      'Melhor visibilidade em condicoes adversas'
-    ],
-    warnings: [],
-    obs: null
+  'vidros':{
+    name:'Cristalizacao de Vidros',
+    includes:['Preparacao e limpeza dos vidros','Tratamento hidrofobico nanotech','Agua escorrega facilmente na chuva','Reducao de chuva acida','Visibilidade melhorada'],
+    warnings:[]
   },
-  'micro-pintura': {
-    name: 'Micro Pintura',
-    tag: 'Novo',
-    includes: [
-      'Avaliacao do risco e profundidade do dano',
-      'Mistura da cor exata da pintura do veiculo',
-      'Aplicacao profissional de retoque de pintura',
-      'Acabamento e nivelamento para corresponder a pintura original',
-      'Protecao e finalizacao da area retocada'
-    ],
-    warnings: ['Para danos maiores ou lataria amassada, e necessario funilaria — consulte um especialista'],
-    obs: 'A Micro Pintura corrige riscos profundos que chegam no primer e pequenas arranhadas, que o polimento tecnico convencional nao consegue eliminar.'
+  'micro-pintura':{
+    name:'Micro Pintura',
+    includes:['Avaliacao do dano','Mistura da cor exata','Aplicacao profissional de retoque','Nivelamento e acabamento','Protecao da area retocada'],
+    warnings:['Para amassados ou danos maiores e necessario funilaria']
   }
 };
 
+/* ── STATE ── */
 var selected = new Set();
-var currentModal = null;
+var openDrawer = null;
 
-/* Fade-in observer */
-var fadeObs = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); fadeObs.unobserve(e.target); }});
-},{threshold:.1});
-document.querySelectorAll('.fade').forEach(function(el){ fadeObs.observe(el); });
+/* ── FADE ── */
+var io = new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.08});
+document.querySelectorAll('.fade').forEach(function(el){io.observe(el);});
 
-/* Phone mask */
-document.getElementById('f-phone').addEventListener('input', function(){
-  var v = this.value.replace(/\D/g,'');
-  if(v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
-  if(v.length > 10) v = v.slice(0,10) + '-' + v.slice(10,14);
-  this.value = v;
-});
-
-/* Date min = today */
+/* ── DATE MIN ── */
 (function(){
-  var d = new Date();
-  var mm = String(d.getMonth()+1).padStart(2,'0');
-  var dd = String(d.getDate()).padStart(2,'0');
-  document.getElementById('f-date').min = d.getFullYear() + '-' + mm + '-' + dd;
+  var d=new Date(), y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), dd=String(d.getDate()).padStart(2,'0');
+  document.getElementById('f-date').min=y+'-'+m+'-'+dd;
 })();
 
-/* Build selected chips display using safe DOM */
-function renderSelectedChips(){
-  var container = document.getElementById('selected-chips-display');
-  while(container.firstChild) container.removeChild(container.firstChild);
+/* ── PHONE MASK ── */
+function maskPhone(el){
+  el.addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'');
+    if(v.length>2) v='('+v.slice(0,2)+') '+v.slice(2);
+    if(v.length>10) v=v.slice(0,10)+'-'+v.slice(10,14);
+    this.value=v;
+  });
+}
+maskPhone(document.getElementById('f-phone'));
+maskPhone(document.getElementById('h-phone'));
 
-  if(selected.size === 0){
-    var empty = document.createElement('span');
-    empty.className = 'empty-chips';
-    empty.textContent = 'Selecione os servicos acima';
-    container.appendChild(empty);
+/* ── SYNC UI ── */
+function renderSelChips(){
+  var c=document.getElementById('sel-chips-display');
+  while(c.firstChild)c.removeChild(c.firstChild);
+  if(!selected.size){
+    var e=document.createElement('div');e.className='sel-empty';e.textContent='Selecione os servicos acima';c.appendChild(e);return;
+  }
+  selected.forEach(function(name){
+    var chip=document.createElement('div');chip.className='sel-chip';
+    var lbl=document.createElement('span');lbl.textContent=name;chip.appendChild(lbl);
+    var btn=document.createElement('button');btn.type='button';btn.setAttribute('aria-label','Remover '+name);btn.dataset.svc=name;
+    var svg=makeSvg([['line',{x1:'18',y1:'6',x2:'6',y2:'18'}],['line',{x1:'6',y1:'6',x2:'18',y2:'18'}]]);
+    btn.appendChild(svg);chip.appendChild(btn);c.appendChild(chip);
+  });
+}
+function renderStickyBar(){
+  var n=selected.size;
+  document.getElementById('sb-count-num').textContent=n;
+  var bar=document.getElementById('sticky-bar');
+  bar.classList.toggle('show',n>0);
+  var sc=document.getElementById('sb-chips');
+  while(sc.firstChild)sc.removeChild(sc.firstChild);
+  selected.forEach(function(s){var c=document.createElement('div');c.className='sb-chip';c.textContent=s;sc.appendChild(c);});
+}
+function syncCards(){
+  document.querySelectorAll('.svc-card[data-id]').forEach(function(card){
+    var svc=SVC[card.dataset.id];
+    card.classList.toggle('active',svc?selected.has(svc.name):false);
+    var btn=card.querySelector('.svc-btn');
+    if(btn&&svc){
+      var on=selected.has(svc.name);
+      btn.firstChild.nextSibling.textContent=' '+(on?'Adicionado':'Agendar');
+    }
+  });
+}
+function syncChips(){
+  document.querySelectorAll('.fchip').forEach(function(ch){ch.classList.toggle('on',selected.has(ch.dataset.svc));});
+}
+function syncAll(){renderSelChips();renderStickyBar();syncCards();syncChips();}
+
+function toggleSvc(name){
+  if(selected.has(name))selected.delete(name);else selected.add(name);
+  syncAll();
+}
+
+/* ── REMOVE FROM CHIPS ── */
+document.getElementById('sel-chips-display').addEventListener('click',function(e){
+  var btn=e.target.closest('button[data-svc]');if(!btn)return;
+  selected.delete(btn.dataset.svc);syncAll();
+});
+
+/* ── SERVICE CARD BUTTONS ── */
+document.getElementById('services-grid').addEventListener('click',function(e){
+  var card=e.target.closest('.svc-card[data-id]');
+  if(!card)return;
+  var btn=e.target.closest('.svc-btn');
+  var svc=SVC[card.dataset.id];if(!svc)return;
+
+  if(btn){
+    toggleSvc(svc.name);
     return;
   }
+  // Clicked card body — open drawer
+  openServiceDrawer(card.dataset.id,card);
+});
 
-  selected.forEach(function(name){
-    var chip = document.createElement('div');
-    chip.className = 'sel-chip';
+/* ── DRAWER ── */
+function openServiceDrawer(id,card){
+  var drawer=document.getElementById('svc-drawer');
+  var inner=document.getElementById('drawer-inner');
+  var svc=SVC[id];if(!svc)return;
 
-    var label = document.createElement('span');
-    label.textContent = name;
-    chip.appendChild(label);
-
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'sel-chip-remove';
-    btn.setAttribute('aria-label', 'Remover ' + name);
-    btn.dataset.svc = name;
-
-    var xSvg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-    xSvg.setAttribute('viewBox','0 0 24 24');
-    var l1 = document.createElementNS('http://www.w3.org/2000/svg','line');
-    l1.setAttribute('x1','18');l1.setAttribute('y1','6');l1.setAttribute('x2','6');l1.setAttribute('y2','18');
-    var l2 = document.createElementNS('http://www.w3.org/2000/svg','line');
-    l2.setAttribute('x1','6');l2.setAttribute('y1','6');l2.setAttribute('x2','18');l2.setAttribute('y2','18');
-    xSvg.appendChild(l1);
-    xSvg.appendChild(l2);
-    btn.appendChild(xSvg);
-    chip.appendChild(btn);
-    container.appendChild(chip);
-  });
-}
-
-function syncAll(){
-  renderSelectedChips();
-  document.querySelectorAll('.svc-card').forEach(function(card){
-    var svc = SERVICES[card.dataset.id];
-    card.classList.toggle('selected', svc ? selected.has(svc.name) : false);
-  });
-  document.querySelectorAll('.chip-inline').forEach(function(chip){
-    chip.classList.toggle('on', selected.has(chip.dataset.svc));
-  });
-  if(currentModal){
-    var btn = document.getElementById('modal-add-btn');
-    var isOn = selected.has(SERVICES[currentModal].name);
-    btn.textContent = isOn ? 'Remover do agendamento' : 'Adicionar ao agendamento';
-    btn.className = isOn ? 'btn-add added' : 'btn-add';
+  if(openDrawer===id){
+    drawer.classList.remove('open');openDrawer=null;return;
   }
+  openDrawer=id;
+
+  // Move drawer after card's row
+  var grid=document.getElementById('services-grid');
+  grid.appendChild(drawer);
+
+  // Build content
+  while(inner.firstChild)inner.removeChild(inner.firstChild);
+
+  var col1=document.createElement('div');
+  var t1=document.createElement('div');t1.className='drawer-title';t1.textContent='O que esta incluso';col1.appendChild(t1);
+  var ul1=document.createElement('ul');ul1.className='drawer-list';
+  svc.includes.forEach(function(txt){var li=document.createElement('li');li.textContent=txt;ul1.appendChild(li);});
+  col1.appendChild(ul1);inner.appendChild(col1);
+
+  if(svc.warnings.length){
+    var col2=document.createElement('div');
+    var t2=document.createElement('div');t2.className='drawer-title';t2.textContent='Observacoes';col2.appendChild(t2);
+    var ul2=document.createElement('ul');ul2.className='drawer-list';
+    svc.warnings.forEach(function(txt){var li=document.createElement('li');li.className='warn';li.textContent=txt;ul2.appendChild(li);});
+    col2.appendChild(ul2);inner.appendChild(col2);
+  }
+
+  drawer.classList.add('open');
+  card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function toggleService(name){
-  if(selected.has(name)) selected.delete(name);
-  else selected.add(name);
-  syncAll();
-}
-
-/* Chip remove via delegation */
-document.getElementById('selected-chips-display').addEventListener('click', function(e){
-  var btn = e.target.closest('.sel-chip-remove');
-  if(!btn) return;
-  selected.delete(btn.dataset.svc);
-  syncAll();
+document.getElementById('drawer-close').addEventListener('click',function(){
+  document.getElementById('svc-drawer').classList.remove('open');openDrawer=null;
 });
 
-/* Service card clicks */
-document.querySelectorAll('.svc-card').forEach(function(card){
-  card.addEventListener('click', function(e){
-    if(e.target.closest('.svc-checkbox')){
-      var svc = SERVICES[card.dataset.id];
-      if(svc) toggleService(svc.name);
-      return;
-    }
-    openModal(card.dataset.id);
+/* ── COMBOS ── */
+document.querySelectorAll('.combo-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var svcs=this.dataset.combo.split(',');
+    svcs.forEach(function(s){selected.add(s.trim());});
+    syncAll();
+    document.getElementById('form-section').scrollIntoView({behavior:'smooth'});
+    toast('Combo adicionado! Preencha o formulario.','ok');
   });
 });
 
-/* Form chip clicks */
-document.getElementById('form-chips').addEventListener('click', function(e){
-  var chip = e.target.closest('.chip-inline');
-  if(chip) toggleService(chip.dataset.svc);
+/* ── FORM CHIPS ── */
+document.getElementById('chips-bar').addEventListener('click',function(e){
+  var ch=e.target.closest('.fchip');if(!ch)return;
+  toggleSvc(ch.dataset.svc);
 });
 
-/* Modal */
-function openModal(id){
-  var svc = SERVICES[id];
-  if(!svc) return;
-  currentModal = id;
-
-  document.getElementById('modal-tag').textContent = svc.tag;
-  document.getElementById('modal-title').textContent = svc.name;
-
-  var ul = document.getElementById('modal-includes');
-  while(ul.firstChild) ul.removeChild(ul.firstChild);
-  svc.includes.forEach(function(text){
-    var li = document.createElement('li');
-    li.textContent = text;
-    ul.appendChild(li);
-  });
-  svc.warnings.forEach(function(text){
-    var li = document.createElement('li');
-    li.className = 'warn';
-    li.textContent = text;
-    ul.appendChild(li);
-  });
-
-  var obsEl = document.getElementById('modal-obs');
-  document.getElementById('modal-obs-text').textContent = svc.obs || '';
-  obsEl.style.display = svc.obs ? '' : 'none';
-
-  var addBtn = document.getElementById('modal-add-btn');
-  var isOn = selected.has(svc.name);
-  addBtn.textContent = isOn ? 'Remover do agendamento' : 'Adicionar ao agendamento';
-  addBtn.className = isOn ? 'btn-add added' : 'btn-add';
-
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(){
-  currentModal = null;
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
-document.getElementById('modal-overlay').addEventListener('click', function(e){ if(e.target === this) closeModal(); });
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
-document.getElementById('modal-add-btn').addEventListener('click', function(){
-  if(!currentModal) return;
-  toggleService(SERVICES[currentModal].name);
+/* ── STICKY BAR SCROLL ── */
+document.getElementById('sb-scroll-btn').addEventListener('click',function(){
+  document.getElementById('form-section').scrollIntoView({behavior:'smooth'});
 });
 
-/* Toast */
-function showToast(msg, type){
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'show ' + (type||'ok');
-  setTimeout(function(){ t.className=''; }, 3000);
-}
+/* ── HERO QUICK SUBMIT (WhatsApp) ── */
+document.getElementById('h-submit').addEventListener('click',function(){
+  var name=document.getElementById('h-name').value.trim();
+  var phone=document.getElementById('h-phone').value.trim();
+  var svc=document.getElementById('h-svc').value;
+  if(!name||!phone){toast('Preencha nome e WhatsApp.','err');return;}
+  var msg='Ola! Me chamo '+name+' e quero agendar um servico no Red Studio.'+(svc?'\nServico: '+svc:'');
+  window.open('https://wa.me/5531995850076?text='+encodeURIComponent(msg),'_blank');
+});
 
-/* Submit */
-document.getElementById('f-submit').addEventListener('click', function(){
-  var name = document.getElementById('f-name').value.trim();
-  var phone = document.getElementById('f-phone').value.trim();
-  var vehicle = document.getElementById('f-vehicle').value.trim();
-  var date = document.getElementById('f-date').value;
-  var time = document.getElementById('f-time').value;
-  var obs = document.getElementById('f-obs').value.trim();
+/* ── MAIN FORM SUBMIT ── */
+document.getElementById('f-submit').addEventListener('click',function(){
+  var name=document.getElementById('f-name').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  var vehicle=document.getElementById('f-vehicle').value.trim();
+  var date=document.getElementById('f-date').value;
+  var time=document.getElementById('f-time').value;
+  var obs=document.getElementById('f-obs').value.trim();
 
-  if(!name){ showToast('Informe seu nome.','err'); document.getElementById('f-name').focus(); return; }
-  if(!phone){ showToast('Informe seu WhatsApp.','err'); document.getElementById('f-phone').focus(); return; }
+  if(!name){toast('Informe seu nome.','err');document.getElementById('f-name').focus();return;}
+  if(!phone){toast('Informe seu WhatsApp.','err');document.getElementById('f-phone').focus();return;}
 
-  var btn = this;
-  btn.disabled = true;
-  while(btn.firstChild) btn.removeChild(btn.firstChild);
-  var spinner = document.createElement('div');
-  spinner.className = 'spinner';
-  var txt = document.createTextNode(' Enviando...');
-  btn.appendChild(spinner);
-  btn.appendChild(txt);
+  var btn=this;btn.disabled=true;
+  while(btn.firstChild)btn.removeChild(btn.firstChild);
+  var sp=document.createElement('div');sp.className='spin';btn.appendChild(sp);
+  btn.appendChild(document.createTextNode(' Enviando...'));
 
-  var payload = {
-    name: name,
-    phone: phone,
-    vehicle: vehicle,
-    date: date,
-    time: time,
-    services: Array.from(selected),
-    obs: obs
-  };
+  var payload={name:name,phone:phone,vehicle:vehicle,date:date,time:time,services:Array.from(selected),obs:obs};
 
-  fetch('/api/agendar', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(payload)
-  })
-  .then(function(r){ return r.json(); })
+  fetch('/api/agendar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  .then(function(r){return r.json();})
   .then(function(data){
     if(data.success){
-      var booking = Object.assign({}, payload, {id: data.id});
-      try{ sessionStorage.setItem('rs_last_booking', JSON.stringify(booking)); }catch(e){}
-      window.location.href = '/obrigado';
-    } else {
-      throw new Error(data.error || 'Erro ao salvar');
-    }
+      try{sessionStorage.setItem('rs_last_booking',JSON.stringify(Object.assign({},payload,{id:data.id})));}catch(e){}
+      window.location.href='/obrigado';
+    }else{throw new Error(data.error||'erro');}
   })
   .catch(function(){
-    showToast('Erro ao enviar. Tente pelo WhatsApp.','err');
-    btn.disabled = false;
-    while(btn.firstChild) btn.removeChild(btn.firstChild);
-    var waIcon = document.createElementNS('http://www.w3.org/2000/svg','svg');
-    waIcon.setAttribute('viewBox','0 0 24 24');
-    waIcon.style.width='18px'; waIcon.style.height='18px'; waIcon.style.fill='#fff';
-    var p = document.createElementNS('http://www.w3.org/2000/svg','path');
-    p.setAttribute('d','M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z');
-    waIcon.appendChild(p);
-    btn.appendChild(waIcon);
-    btn.appendChild(document.createTextNode(' Confirmar Agendamento'));
+    toast('Erro ao enviar. Tente pelo WhatsApp.','err');
+    btn.disabled=false;
+    while(btn.firstChild)btn.removeChild(btn.firstChild);
+    var ico=makeSvgFill('M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z');
+    btn.appendChild(ico);btn.appendChild(document.createTextNode(' Confirmar Agendamento'));
   });
 });
 
-/* Initial render */
+/* ── SVG HELPERS ── */
+function makeSvg(paths){
+  var s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox','0 0 24 24');
+  paths.forEach(function(p){var el=document.createElementNS('http://www.w3.org/2000/svg',p[0]);Object.keys(p[1]).forEach(function(k){el.setAttribute(k,p[1][k]);});s.appendChild(el);});
+  return s;
+}
+function makeSvgFill(d){
+  var s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  s.setAttribute('viewBox','0 0 24 24');s.style.width='18px';s.style.height='18px';s.style.fill='#fff';
+  var p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);s.appendChild(p);return s;
+}
+
+/* ── TOAST ── */
+function toast(msg,type){
+  var t=document.getElementById('toast');t.textContent=msg;t.className='show '+(type||'ok');
+  setTimeout(function(){t.className='';},3000);
+}
+
+/* ── INITIAL ── */
 syncAll();
 
 })();

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agendamento Confirmado | Red Studio Automotive</title>
+<meta name="robots" content="noindex">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#CC0000;--bg:#080808;--bg2:#111;--text:#F2F2F2;--text2:#888}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:40px;justify-content:center}
+.logo-circle{width:40px;height:40px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#fff}
+.logo-text{font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.logo-text span{color:var(--red)}
+.check-wrap{width:88px;height:88px;background:rgba(204,0,0,.12);border:2px solid rgba(204,0,0,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.check-wrap svg{width:44px;height:44px;stroke:var(--red);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+h1{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;letter-spacing:-.04em;margin-bottom:12px}
+h1 span{color:var(--red)}
+.sub{font-size:1rem;color:var(--text2);line-height:1.7;max-width:420px;margin:0 auto 36px}
+.detail{background:var(--bg2);border:1px solid #1e1e1e;border-radius:8px;padding:20px 24px;margin-bottom:32px;max-width:440px;width:100%;text-align:left}
+.detail-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:.85rem}
+.detail-row:last-child{border-bottom:none}
+.detail-row .k{color:var(--text2)}
+.detail-row .v{color:var(--text);font-weight:600}
+.actions{display:flex;flex-direction:column;gap:10px;width:100%;max-width:360px}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-size:.95rem;font-weight:700;padding:14px 20px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-wa:hover{background:#1ebe5d}
+.btn-wa svg{width:20px;height:20px;fill:#fff}
+.btn-back{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--text2);font-size:.88rem;padding:12px;border-radius:8px;border:1px solid #222;cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-back:hover{color:var(--text);border-color:#333}
+.note{font-size:.78rem;color:var(--text2);margin-top:28px;line-height:1.6;max-width:420px}
+.confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:0}
+.c-piece{position:absolute;width:8px;height:8px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+<!-- Google Ads conversion tracking placeholder -->
+<!-- gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/XXXXXXXXX' }); -->
+</head>
+<body>
+<div class="confetti" id="confetti"></div>
+<div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;width:100%">
+  <div class="logo">
+    <div class="logo-circle">RS</div>
+    <div class="logo-text">Red <span>Studio</span></div>
+  </div>
+  <div class="check-wrap">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h1>Agendamento <span>Confirmado!</span></h1>
+  <p class="sub">Recebemos sua solicitação. Nossa equipe entrará em contato pelo WhatsApp para confirmar data e horário.</p>
+  <div class="detail" id="booking-detail" style="display:none">
+    <div class="detail-row"><span class="k">Nome</span><span class="v" id="d-name">—</span></div>
+    <div class="detail-row"><span class="k">Veículo</span><span class="v" id="d-vehicle">—</span></div>
+    <div class="detail-row"><span class="k">Data preferida</span><span class="v" id="d-date">—</span></div>
+    <div class="detail-row"><span class="k">Serviços</span><span class="v" id="d-services">—</span></div>
+    <div class="detail-row"><span class="k">Status</span><span class="v" style="color:#F59E0B">Aguardando confirmação</span></div>
+  </div>
+  <div class="actions">
+    <a href="https://wa.me/5531995850076?text=Ol%C3%A1%21+Acabei+de+fazer+um+agendamento+no+site+do+Red+Studio." target="_blank" class="btn-wa" id="wa-btn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+    <a href="/agendar" class="btn-back">Fazer outro agendamento</a>
+  </div>
+  <p class="note">Guarde o número (31) 99585-0076 na sua agenda. Responderemos em breve para confirmar seu horário.</p>
+</div>
+<script>
+(function(){
+  // Read booking info from sessionStorage
+  var booking = null;
+  try { booking = JSON.parse(sessionStorage.getItem('rs_last_booking') || 'null'); } catch(e){}
+
+  if (booking) {
+    var detail = document.getElementById('booking-detail');
+    detail.style.display = '';
+    document.getElementById('d-name').textContent = booking.name || '—';
+    document.getElementById('d-vehicle').textContent = booking.vehicle || '—';
+    var d = booking.date ? booking.date.split('-').reverse().join('/') : '—';
+    document.getElementById('d-date').textContent = d + (booking.time ? ' às ' + booking.time : '');
+    document.getElementById('d-services').textContent = (booking.services || []).join(', ') || '—';
+
+    // Update WhatsApp link with booking details
+    var msg = 'Olá! Acabei de agendar pelo site do Red Studio.\n\n';
+    msg += 'Nome: ' + booking.name + '\n';
+    if (booking.vehicle) msg += 'Veículo: ' + booking.vehicle + '\n';
+    if (booking.date) msg += 'Data: ' + d + (booking.time ? ' às ' + booking.time : '') + '\n';
+    if (booking.services && booking.services.length) msg += 'Serviços: ' + booking.services.join(', ') + '\n';
+    document.getElementById('wa-btn').href = 'https://wa.me/5531995850076?text=' + encodeURIComponent(msg);
+
+    sessionStorage.removeItem('rs_last_booking');
+  }
+
+  // Confetti
+  var colors = ['#CC0000','#FF4444','#fff','#F59E0B','#888'];
+  var c = document.getElementById('confetti');
+  for (var i = 0; i < 60; i++) {
+    var el = document.createElement('div');
+    el.className = 'c-piece';
+    el.style.cssText = [
+      'left:' + Math.random()*100 + '%',
+      'background:' + colors[Math.floor(Math.random()*colors.length)],
+      'animation-duration:' + (1.5 + Math.random()*2) + 's',
+      'animation-delay:' + (Math.random()*0.8) + 's',
+      'width:' + (6 + Math.random()*6) + 'px',
+      'height:' + (6 + Math.random()*6) + 'px',
+      'border-radius:' + (Math.random()>0.5?'50%':'2px')
+    ].join(';');
+    c.appendChild(el);
+  }
+})();
+</script>
+</body>
+</html>
